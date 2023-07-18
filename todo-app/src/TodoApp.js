@@ -69,31 +69,46 @@ const TodoApp = () => {
         <button
           className={`mr-8 ${
             filter === 'All' ? 'font-bold' : 'text-gray-500'
-          } focus:border-b-4 border-blue-500 ml-0 justify-self-start`}
+          }  justify-self-start ${
+            filter === 'All' ? 'focus:border-b-4 border-blue-500 rounded-sm -mb-7' : ''
+          } ${
+            filter === 'All' ? 'relative' : ''
+          }
+          `}
           onClick={() => setFilter('All')}
         >
           All
         </button>
         <button
-          className={`mr-8 ${
+          className={`relative mr-8 ${
             filter === 'Active' ? 'font-bold' : 'text-gray-500'
-          } focus:border-b-4 border-blue-500 ml-16`}
+          }  ml-16 justify-self-center ${
+            filter === 'Active' ? 'focus:border-b-4 border-blue-500 rounded-sm -mb-7' : ''
+          } ${
+            filter === 'Active' ? 'relative' : ''
+          }`}
           onClick={() => setFilter('Active')}
         >
           Active
         </button>
         <div>
         <button
-          className={`mr-0 ${
-            filter === 'Completed' ? 'font-bold' : 'text-gray-500'
-          } focus:border-b-4 border-blue-500 ml-16 justify-self-end`}
-          onClick={() => setFilter('Completed')}
-        >
-          Completed
-        </button>
-        
+  className={`mr-0 ${
+    filter === 'Completed' ? 'font-bold' : 'text-gray-500'
+  } ml-16 justify-self-end ${
+    filter === 'Completed' ? 'focus:border-b-4 border-blue-500 rounded-sm' : ''
+  } ${
+    filter === 'Completed' ? 'absolute' : ''
+  }`}
+  onClick={() => setFilter('Completed')}
+>
+  Completed
+</button>
         </div>
         </div>
+        {filter && (
+    <div className="absolute -top-4 w-[608px] h-[4px] bg-blue-500"></div>
+  )}
         <div class="w-[608px] h-[0px] border border-stone-300"></div>
       {shouldShowInput && (
       <div className="flex items-center mb-4 mt-4">
